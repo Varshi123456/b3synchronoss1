@@ -1,23 +1,43 @@
 package com.example.b3synchronoss
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import java.lang.NullPointerException
 
 
 class MainActivity : AppCompatActivity() {
+    private  val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.v(TAG,"hello")
+
+        logging()
         var rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener(){
             rollDice()
          rollButton.text="rolled"
+//
+
         }
+
     }
+    fun logging(){
+
+        Log.e(TAG, "ERROR: a serious error like an app crash")
+        Log.w(TAG, "WARN: warns about the potential for serious errors")
+        Log.i(TAG, "INFO: reporting technical information, such as an operation succeeding")
+        Log.d(TAG, "DEBUG: reporting technical information useful for debugging")
+        Log.v(TAG, "VERBOSE: more verbose than DEBUG logs")
+    }
+
+
     fun rollDice(){
         val toast=Toast.makeText(this,"dice rolled",Toast.LENGTH_SHORT)
         toast.show()
@@ -44,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         val resultTextView: TextView= findViewById(R.id.textView5)
         resultTextView.text= diceRoll.toString()
+        throw  NullPointerException ("out of app")
+
     }
 
 }
